@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shellah Emmanuella | Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+
+/* the body effects */
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+
+
+/* ================= Navbar Container ================= */
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+/* Shrink & glow effect on scroll */
+#navbar.scrolled {
+  padding: 0.5rem 0;
+  background: rgba(20, 20, 20, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+/* ================= Logo ================= */
+.logo-img {
+  width: 110px;
+  height: auto;
+  transform: scale(1.4);
+  transform-origin: center;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
+  transition: transform 0.45s cubic-bezier(.175,.885,.32,1.275),
+              filter 0.45s ease,
+              opacity 0.45s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.55) rotate(-2deg);
+  filter: drop-shadow(0 0 18px rgba(66,230,149,0.75))
+          drop-shadow(0 0 35px rgba(66,138,255,0.55));
+  opacity: 1;
+}
+
+.logo-img:active {
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 25px rgba(255,110,196,0.6));
+  opacity: 0.9;
+}
+
+/* ================= Navbar Links ================= */
+.navbar-nav .nav-link {
+  position: relative;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-left: 1.5rem;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Gradient underline effect */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #42e695, #3bb2b8);
+  transition: width 0.35s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #42e695;
+}
+
+/* ================= Mobile Navbar Toggle ================= */
+.navbar-toggler {
+  border: none;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggler:active {
+  transform: scale(0.95);
+}
+
+/* ================= Gradient Text Utility ================= */
+.text-gradient {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+/* ==================== Hero Section ==================== */
+.hero {
+  height: auto;
+  min-height: 300px;        /* ensures small screens are okay */
+  max-height: 600px;        /* limits hero height */
+  display: flex;
+  align-items: center;      /* vertically center content */
+  justify-content: center;  /* horizontally center content */
+  position: relative;
+  overflow: hidden;         /* hides floating shapes outside hero */
+  padding: 40px 20px;       /* compact vertical padding */
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #42e695);
+  background-size: 600% 600%;
+  animation: gradientAnimation 15s ease infinite;
+  color: #fff;
+  text-align: center;
+}
+
+/* Overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+}
+
+/* Container inside hero */
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Text */
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.hero .btn {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+}
+
+/* Hero Image */
+.hero .profile-img {
+  max-width: 180px;
+  height: auto;
+  margin-top: 15px;
+}
+
+/* ==================== Gradient Animation ==================== */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==================== Floating Shapes ==================== */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  z-index: 0;
+  animation: floatShape linear infinite;
+}
+
+/* Shapes: smaller & limited top positions */
+.shape1 { width: 40px; height: 40px; background: #fff; top: 10%; left: 15%; animation-duration: 10s; }
+.shape2 { width: 60px; height: 60px; background: #42e695; top: 20%; left: 70%; animation-duration: 14s; }
+.shape3 { width: 35px; height: 35px; background: #ff6ec4; top: 50%; left: 40%; animation-duration: 12s; }
+.shape4 { width: 50px; height: 50px; background: #7873f5; top: 35%; left: 20%; animation-duration: 16s; }
+
+@keyframes floatShape {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  50% { transform: translateY(-15px) translateX(10px) rotate(180deg); }
+  100% { transform: translateY(0) translateX(0) rotate(360deg); }
+}
+
+/* ==================== Floating Tech Icons ==================== */
+.hero-floating-icons {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tech-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: floatTech linear infinite;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Specific positions for tech icons */
+.tech-icon:nth-child(1) { top: 12%; left: 25%; animation-delay: 0s; }
+.tech-icon:nth-child(2) { top: 22%; left: 65%; animation-delay: 2s; }
+.tech-icon:nth-child(3) { top: 55%; left: 35%; animation-delay: 4s; }
+.tech-icon:nth-child(4) { top: 42%; left: 75%; animation-delay: 6s; }
+
+.tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hover effects */
+.tech-icon:hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+}
+
+/* Tooltip labels */
+.tech-icon::after {
+  content: attr(data-skill);
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.tech-icon:hover::after { opacity: 1; }
+
+@keyframes floatTech {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+
+
+
+    /* Projects Cards Section */
+    .card:hover { transform: translateY(-10px); box-shadow:0 .5rem 1rem rgba(0,0,0,.2); transition:all .3s ease; cursor:pointer; }
+/* Project Card Hover */
+
+
+.project-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Glowing border */
+.project-card:hover {
+  box-shadow: 0 0 20px rgba(121, 80, 242, 0.6),
+              0 0 40px rgba(121, 80, 242, 0.4);
+}
+
+.project-card img {
+  border-radius: 10px;   /* optional rounded corners */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card img:hover {
+  transform: scale(1.05); /* zoom on hover */
+}
+
+
+/* Tech tags */
+.tech-tags span {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 4px 10px;
+  margin: 3px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* Buttons */
+.project-btn {
+  border-radius: 20px;
+  padding: 8px 20px;
+  transition: 0.3s ease;
+}
+
+.project-btn:hover {
+  transform: translateY(-3px);
+}
+
+
+.github-wrapper {
+  position: relative;
+}
+
+.github-note {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  color: #555;
+}
+
+.github-wrapper:hover .github-note {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+/* Center buttons with spacing */
+.project-btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Reveal Animation */
+.reveal { opacity:0; transform:translateY(50px); transition: all 0.6s ease; }
+.reveal.active { opacity:1; transform:translateY(0); }
+
+
+
+
+
+
+
+
+
+    /* why choose me */
+
+    /* Gradient text & button styling */
+.text-gradient {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* fallback for newer browsers */
+}
+
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  border: none;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  transform: translateY(-2px);
+}
+
+/* Hover effect on cards */
+#why-choose-me .card {
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+/* Fix invisible subtitles in Why Choose Me cards */
+#why-choose-me .card h5,
+#why-choose-me .card p {
+  color: #fff; /* ensures visibility on dark or gradient backgrounds */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6); /* optional: adds glow for readability */
+}
+
+#why-choose-me .card .text-gradient {
+  -webkit-text-fill-color: #fff; /* override transparency for subtitle text */
+  color: #fff;
+}
+
+
+
+
+#why-choose-me .card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+    /* Skills */
+    .skill { margin-bottom:1.5rem; }
+    .skill-name { font-weight:600; margin-bottom:.3rem; }
+    .progress { height:1rem; border-radius:.5rem; }
+
+    /* Contact */
+    /* Contact (small button pulse) */
+.btn-success { position:relative; animation: btnPulse 2s infinite; }
+@keyframes btnPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(72,180,97,.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(72,180,97,.7); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(72,180,97,.7); }
+}
+
+
+    .social-floating-icons {
+  position: fixed;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+
+
+.float-icon img.icon-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.float-icon img.icon-img:hover {
+  transform: scale(1.1);
+}
+
+
+
+/* WhatsApp Glow renamed */
+@keyframes whatsappPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+  70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* Drawer Overlay (background dim + blur) */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+  z-index: 900;
+}
+
+/* Show overlay */
+.drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Drawer */
+.contact-drawer {
+  position: fixed;
+  right: -320px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: #fff;
+  padding: 25px;
+  box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+  transition: right 0.35s ease;
+  z-index: 1000;
+}
+
+/* When open */
+.contact-drawer.open {
+  right: 0;
+}
+
+/* Close button */
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* WhatsApp Form Styling */
+.whatsapp-form input,
+.whatsapp-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.whatsapp-form label {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+
+
+
+    /* Footer */
+    footer { background-color:#222; color:#fff; }
+
+   /* Flexible Scroll Arrow */
+#scrollArrow {
+  width: 30px;
+  height: 30px;
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+  position: absolute;
+  bottom: 35px; /* raised slightly */
+  left:50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity .3s ease, transform .3s ease;
+  animation: floatArrow 1.8s infinite ease-in-out;
+  z-index: 9999;
+  transform: translateX(-50%);
+}
+
+/* New animation without transform */
+@keyframes floatArrow {
+  0% { margin-bottom: 0; opacity: .5; }
+  50% { margin-bottom: 8px; opacity: 1; }
+  100% { margin-bottom: 0; opacity: .5; }
+}
+
+
+/* Hover effect */
+#scrollArrow:hover {
+  opacity: 1;
+}
+
+
+/* AI Assistant */
+.ai-assistant {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ai-toggle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  
+}
+
+.ai-toggle:hover {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.ai-box {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  display: none;
+  overflow: hidden;
+}
+
+.ai-header {
+  background: linear-gradient(135deg, #ff6ec4, #7873f5);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.ai-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.ai-messages {
+  height: 260px;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f7f7f7;
+}
+
+.ai-message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.ai-message.ai {
+  background: #e4e6ff;
+}
+
+.ai-message.user {
+  background: #d1f5e0;
+  text-align: right;
+}
+
+.ai-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.ai-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.ai-input button {
+  border: none;
+  padding: 10px 16px;
+  background: #48b461;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* Float animation (NO ROTATION HERE!) */
+/* @keyframes floatArrow {
+  0% { transform: translateY(0); opacity: .5; }
+  50% { transform: translateY(8px); opacity: 1; }
+  100% { transform: translateY(0); opacity: .5; }
+} */
+
+
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
+
+<!-- Navbar -->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a class="navbar-brand" href="#hero">
+      <img src="Images/LOOOGO1.webp" alt="Logo" class="logo-img">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center gap-3">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Projects</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#why-choose-me">Why Me</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">Skills</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+<!-- Hero Section with Particle Background -->
+<section id="hero" class="hero d-flex align-items-center position-relative overflow-hidden">
+  <!-- Particle canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Interactive Floating Tech Icons -->
+    <div class="hero-floating-icons">
+  <div class="tech-icon" data-skill="HTML5"><img src="Images/html.png" alt="HTML5"></div>
+  <div class="tech-icon" data-skill="CSS3"><img src="Images/developer.png" alt="CSS3"></div>
+  <div class="tech-icon" data-skill="JavaScript"><img src="Images/java-script.png" alt="JavaScript"></div>
+  <div class="tech-icon" data-skill="Bootstrap"><img src="Images/bootstrap.png" alt="Bootstrap"></div>
+</div>
+
+
+  <div class="container position-relative text-white">
+    <div class="row align-items-center">
+      
+      <!-- Profile Image -->
+      <div class="col-md-5 text-center text-md-start mb-4 mb-md-0">
+        <picture>
+          <source srcset="Images/shella1 (2).png" type="image/webp">
+          <img src="Images/shella1 (2).png" alt="Shellah Emmanuella" 
+               class="img-fluid rounded-circle shadow-lg profile-img"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <!-- Text Content -->
+      <div class="col-md-7 text-center text-md-start">
+        <h1 class="fw-bold display-4 mb-3 title-glow">CREATING THE FUTURE OF THE WEB</h1>
+        <p class="lead mb-4 subtitle">
+          I craft immersive, high-performance digital experiences that merge creativity, technology, and precision —
+          building the kind of web that inspires and performs.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center justify-content-md-start">
+          <div class="info-badge">✨ 2+ Years Experience</div>
+          <div class="info-badge">🚀 10+ Projects Delivered</div>
+          <div class="info-badge">🎨 UI/UX & Frontend Expert</div>
+        </div>
+
+        <a href="#projects" class="btn btn-gradient btn-lg shadow-lg">Explore My Work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll-to-top arrow -->
+  <!-- <a href="#navbar" id="backToTop" class="scroll-top"><i class="bi bi-arrow-up-short"></i></a> -->
+</section>
+
+<style>
+  /* Hero gradient background */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #42e695);
+    background-size: 600% 600%;
+    animation: gradientMove 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Particle canvas */
+  #particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Floating profile image */
+  .profile-img {
+    max-width: 400px;
+    border: 3px solid rgba(255,255,255,0.2);
+    animation: float 6s ease-in-out infinite, fadeInUp 1s ease forwards;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile-img:hover {
+    transform: scale(1.05) rotate(-2deg);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Gradient title glow */
+  .title-glow {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari / Chrome support */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  display: inline-block; /* important for background clipping to work properly */
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1.3s ease forwards;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(6px);
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255,110,196,0.3);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+    background-size: 200% 200%;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: gradientShift 6s ease infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(120,115,245,0.5);
+  }
+
+  .scroll-top {
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px 12px;
+    font-size: 1.8rem;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .scroll-top:hover {
+    background: linear-gradient(90deg, #ff6ec4, #42e695);
+    box-shadow: 0 0 15px rgba(255,110,196,0.5);
+  }
+
+  .scroll-top i {
+    font-weight: bold;
+  }
+</style>
+
+<!-- Particle Animation Script -->
+<script>
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particlesArray;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector('.hero').offsetHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class Particle {
+    constructor(x, y, size, speedX, speedY) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.speedX = speedX;
+      this.speedY = speedY;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+    draw() {
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    const numParticles = 50;
+    for (let i = 0; i < numParticles; i++) {
+      const size = Math.random() * 2 + 1;
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const speedX = (Math.random() - 0.5) * 0.3;
+      const speedY = (Math.random() - 0.5) * 0.3;
+      particlesArray.push(new Particle(x, y, size, speedX, speedY));
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+</script>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="py-5 bg-light reveal">
+  <div class="container">
+    <h2 class="text-center mb-5">Featured Work</h2>
+
+    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- YOUTUBE CLONE -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card project-card shadow-sm">
+                <img src="Images/youtubeclone.png" class="d-block w-100" alt="YouTube Clone">
+
+                <div class="card-body text-center">
+                  <h5 class="card-title">YouTube Clone</h5>
+                  <p class="card-text">
+                    A responsive video streaming interface with a modern layout, video grid, player page, and sidebar navigation.
+                  </p>
+
+                  <div class="tech-tags mt-2">
+                    <span class="tag html"><i class="bi bi-code-slash"></i> HTML</span>
+                    <span class="tag css"><i class="bi bi-palette"></i> CSS</span>
+                    <span class="tag js"><i class="bi bi-lightning-charge"></i> JavaScript</span>
+                  </div>
+
+
+                  <div class="project-btn-group mt-3">
+                    <a href="https://shellahemmanuella.github.io/YouTubeClone/" class="btn btn-outline-dark project-btn">View Demo</a>
+                    
+                    <div class="github-wrapper" style="display: inline-block;">
+                      <a href="#contact" class="btn btn-outline-dark project-btn">GitHub</a>
+                      <small class="github-note">Contact me</small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TO-DO LIST -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card project-card shadow-sm">
+                <a href="todoAPP.html">
+                  <img src="Images/shellahsToDo.png" class="d-block w-100" alt="To-Do App">
+                </a>
+                
+
+                <div class="card-body text-center">
+                  <h5 class="card-title">To-Do List App</h5>
+                  <p class="card-text">A clean productivity app with add, edit, complete, and delete task functions.</p>
+
+                  <div class="tech-tags mt-2">
+                    <span class="tag html"><i class="bi bi-code-slash"></i> HTML</span>
+                    <span class="tag css"><i class="bi bi-palette"></i> CSS</span>
+                    <span class="tag js"><i class="bi bi-lightning-charge"></i> JavaScript</span>
+                  </div>
+
+
+                  <div class="project-btn-group mt-3">
+                    <a href="todoAPP.html" class="btn btn-outline-dark project-btn">View Demo</a>
+                    
+                    <div class="github-wrapper" style="display: inline-block;">
+                      <a href="#contact" class="btn btn-outline-dark project-btn">GitHub</a>
+                      <small class="github-note">Contact me</small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PORTFOLIO WEBSITE -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card project-card shadow-sm">
+                <a href="index2.html">
+                  <img src="Images/shellah'sPortfolio.png" class="d-block w-100" alt="To-Do App">
+                </a>
+
+                <div class="card-body text-center">
+                  <h5 class="card-title">Portfolio Website</h5>
+                  <p class="card-text">A sleek personal portfolio with smooth animations and responsive design.</p>
+
+                  <div class="tech-tags mt-2">
+                    <span class="tag html"><i class="bi bi-code-slash"></i> HTML</span>
+                    <span class="tag css"><i class="bi bi-palette"></i> CSS</span>
+                    <span class="tag js"><i class="bi bi-lightning-charge"></i> JavaScript</span>
+                  </div>
+
+
+                  <div class="project-btn-group mt-3">
+                    <a href="index2.html" class="btn btn-outline-dark project-btn">View Demo</a>
+                    
+                    <div class="github-wrapper" style="display: inline-block;">
+                      <a href="#contact" class="btn btn-outline-dark project-btn">GitHub</a>
+                      <small class="github-note">Contact me</small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOD DELIVERY SYSTEM -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card project-card shadow-sm">
+                <img src="Images/falsh.png" class="d-block w-100" alt="Food Delivery System">
+
+                <div class="card-body text-center">
+                  <h5 class="card-title">Food Delivery System</h5>
+                  <p class="card-text">A food ordering interface with menu browsing, cart management, and order placement.</p>
+
+                  <div class="tech-tags mt-2">
+                    <span class="tag html"><i class="bi bi-code-slash"></i> HTML</span>
+                    <span class="tag css"><i class="bi bi-palette"></i> CSS</span>
+                    <span class="tag js"><i class="bi bi-lightning-charge"></i> JavaScript</span>
+                  </div>
+
+
+                  <div class="project-btn-group mt-3">
+                    <a href="splash copy.html" class="btn btn-outline-dark project-btn">View Demo</a>
+                    
+                    <div class="github-wrapper" style="display: inline-block;">
+                      <a href="#contact" class="btn btn-outline-dark project-btn">GitHub</a>
+                      <small class="github-note">Contact me</small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- WHY CHOOSE ME SECTION -->
+<section id="why-choose-me" class="py-5 text-white" style="background: linear-gradient(135deg, #111827, #1f2937);">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold">Why Choose Me?</h2>
+    <p class="text-center mb-5 lead text-light opacity-75">
+      Delivering creative, reliable, and high-quality solutions for your projects.
+    </p>
+
+    <div class="row g-4 text-center">
+      <!-- Card 1 -->
+      <div class="col-md-3">
+        <div class="card h-100 bg-transparent border-0">
+          <div class="card-body">
+            <div class="icon mb-3 fs-1 text-gradient"><i class="bi bi-lightbulb-fill"></i></div>
+            <h5 class="fw-semibold">Expertise You Can Trust</h5>
+            <p class="small text-light opacity-75">
+              Hands-on experience in web development, UI/UX design, and creating responsive, modern websites.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-3">
+        <div class="card h-100 bg-transparent border-0">
+          <div class="card-body">
+            <div class="icon mb-3 fs-1 text-gradient"><i class="bi bi-brush-fill"></i></div>
+            <h5 class="fw-semibold">Creative Problem Solver</h5>
+            <p class="small text-light opacity-75">
+              Innovative solutions that turn ideas into functional and visually appealing results.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3">
+        <div class="card h-100 bg-transparent border-0">
+          <div class="card-body">
+            <div class="icon mb-3 fs-1 text-gradient"><i class="bi bi-shield-check"></i></div>
+            <h5 class="fw-semibold">Reliable & Professional</h5>
+            <p class="small text-light opacity-75">
+              Projects delivered on time with full attention to detail and quality.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3">
+        <div class="card h-100 bg-transparent border-0">
+          <div class="card-body">
+            <div class="icon mb-3 fs-1 text-gradient"><i class="bi bi-people-fill"></i></div>
+            <h5 class="fw-semibold">Client-Focused Approach</h5>
+            <p class="small text-light opacity-75">
+              Clear communication and collaboration to ensure your vision is realized perfectly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-5">
+      <a href="#contact" class="btn btn-gradient btn-lg px-4 py-2">Work With Me</a>
+    </div>
+  </div>
+  </section>
+
+
+<!-- Skills Section -->
+<section id="skills" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="skill">
+          <div class="skill-name">HTML & CSS</div>
+          <div class="progress">
+            <div class="progress-bar bg-primary" role="progressbar" style="width:85%">85%</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="skill">
+          <div class="skill-name">JavaScript & Bootstrap</div>
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width:80%">80%</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="skill">
+          <div class="skill-name">UI/UX Design</div>
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width:75%">75%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 text-center bg-light">
+  <div class="container reveal">
+    <h2 class="mb-4 fw-bold">Let’s Build Something Amazing</h2>
+    <p class="lead mb-4">
+      I’m excited to collaborate, innovate, and bring ideas to life.  
+      Whether it's a project, job opportunity, or creative idea — I'm ready!
+    </p>
+
+    <!-- Smooth scroll to contact drawer -->
+    <button id="openContactDrawer" class="btn btn-success btn-lg contact-trigger">
+      Get In Touch
+    </button>
+  </div>
+</section>
+
+
+<div id="drawerOverlay" class="drawer-overlay"></div>
+
+<div id="contactDrawer" class="contact-drawer">
+  <button id="closeDrawer" class="drawer-close">&times;</button>
+
+  <h3>Let’s Connect</h3>
+  <p>Feel free to reach out — I respond quickly!</p>
+
+
+  <!--WhatsApp form-fill-->
+  <form id="whatsappForm" class="whatsapp-form">
+  <label>Your Name</label>
+  <input type="text" id="wName" placeholder="Enter your name" required>
+
+  <label>Your Message</label>
+  <textarea id="wMessage" placeholder="Type your message" required></textarea>
+
+  <button type="submit" class="btn btn-success w-100 mt-3">
+    Send via WhatsApp
+  </button>
+  </form>
+</div>
+
+
+
+
+<!-- Floating Social Icons -->
+<div class="social-floating-icons">
+  <a href="mailto:shellah01emmanuella@gmail.com" class="float-icon" title="Email">
+    <img src="Images/wa (3).png" alt="Email Icon" class="icon-img">
+  </a>
+
+  <a href="https://wa.me/+256705161711?text=Hello%20Emmanuella!" class="float-icon" title="WhatsApp">
+    <img src="Images/wa (1).png" alt="WhatsApp Icon" class="icon-img">
+  </a>
+
+  <a href="https://www.linkedin.com/in/shellah-emmanuella-a4a222241/" class="float-icon" target="_blank" title="LinkedIn">
+    <img src="Images/wa (4).png" alt="LinkedIn Icon" class="icon-img">
+  </a>
+
+  <a href="mailto:shellahemmanuella@gmail.com?subject=GitHub Access Request&body=Hello Shellah, I would like access to your GitHub repositories." 
+     class="float-icon" title="Request GitHub Access">
+    <img src="Images/wa (2).png" alt="GitHub Icon" class="icon-img">
+  </a>
+</div>
+
+
+<!-- AI Assistant -->
+<div class="ai-assistant">
+  <img src="Images/ai.png" class="ai-toggle" id="aiToggle">
+
+  <div class="ai-box" id="aiBox">
+    <div class="ai-header">
+      <span>Shellah AI Assistant</span>
+      <button id="aiClose">&times;</button>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-message ai">
+        Hi 👋 I'm Shellah’s AI assistant.  
+        Ask me about her skills, experience, or projects.
+      </div>
+    </div>
+
+    <div class="ai-input">
+      <input type="text" id="aiInput" placeholder="Ask me something..." />
+      <button id="aiSend">Send</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="py-3 text-center">&copy; 2026 Shellah Emmanuella. All rights reserved.</footer>
+
+<!--Scroll Arrow-->
+<div id="scrollArrow" class="scroll-arrow"></div>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+  // Reveal on scroll
+  window.addEventListener('scroll', function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const windowHeight = window.innerHeight;
+    reveals.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) { 
+        el.classList.add('active'); 
+      }
+    });
+  });
+
+  const navbar = document.getElementById('navbar');
+  const logo = document.querySelector('.logo-img'); // Only one declaration
+
+
+
+// Listen for scroll events
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {  // scroll trigger can be adjusted
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+
+  // Logo click zoom effect
+  logo.addEventListener('click', () => {
+    // Temporary "pop" effect
+    logo.style.transform = 'scale(1.5) rotate(10deg)';
+    logo.style.filter = 'drop-shadow(0 0 30px #ff6ec4)';
+    setTimeout(() => {
+      logo.style.transform = 'scale(1.35) rotate(-5deg)';
+      logo.style.filter = 'drop-shadow(0 0 25px #42e695)';
+    }, 400);
+  });
+
+  const trigger = document.querySelector('.contact-trigger');
+  const drawer = document.querySelector('.contact-drawer');
+
+  trigger.addEventListener('click', () => {
+    drawer.classList.toggle('open');
+  });
+
+const arrow = document.getElementById('scrollArrow');
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      // Point up
+      arrow.style.transform = "rotate(-135deg)";
+    } else {
+      // Point down
+      arrow.style.transform = "rotate(45deg)";
+    }
+  });
+
+  document.getElementById('whatsappForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if(!name || !message){
+    alert("Please fill in all fields!");
+    return;
+  }
+
+  // Your WhatsApp number in international format (without +)
+  const phoneNumber = "256705161711"; 
+
+  // Pre-fill message
+  const text = encodeURIComponent(`Hi, my name is ${name}.\n${message}`);
+
+  // Open WhatsApp Web or App in a new tab
+  window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+});
+
+
+
+// ============================
+// CONTACT DRAWER CONTROLS
+// ============================
+//const drawer = document.querySelector(".contact-drawer");
+const overlay = document.querySelector(".drawer-overlay");
+const openBtn = document.getElementById("openContactDrawer");
+const closeBtn = document.querySelector(".drawer-close");
+
+// Open drawer
+openBtn.addEventListener("click", () => {
+  drawer.classList.add("open");
+  overlay.classList.add("active");
+});
+
+// Close drawer
+closeBtn.addEventListener("click", () => {
+  drawer.classList.remove("open");
+  overlay.classList.remove("active");
+});
+
+// Close drawer when clicking outside
+overlay.addEventListener("click", () => {
+  drawer.classList.remove("open");
+  overlay.classList.remove("active");
+});
+
+
+// ============================
+// WHATSAPP MESSAGE SENDER
+// ============================
+document.getElementById("whatsappForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let name = document.getElementById("wName").value.trim();
+  let message = document.getElementById("wMessage").value.trim();
+
+  if(!name || !message){
+    alert("Please fill out all fields.");
+    return;
+  }
+
+  // Replace with your WhatsApp number
+  let phone = "256705161711";  
+
+  let url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent("Hello, my name is " + name + ".\n\n" + message);
+
+  window.open(url, "_blank");
+});
+
+
+const aiToggle = document.getElementById('aiToggle');
+const aiBox = document.getElementById('aiBox');
+const aiClose = document.getElementById('aiClose');
+const aiSend = document.getElementById('aiSend');
+const aiInput = document.getElementById('aiInput');
+const aiMessages = document.getElementById('aiMessages');
+
+aiToggle.onclick = () => aiBox.style.display = 'block';
+aiClose.onclick = () => aiBox.style.display = 'none';
+
+aiSend.onclick = sendMessage;
+aiInput.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendMessage();
+});
+
+function sendMessage() {
+  const text = aiInput.value.trim();
+  if (!text) return;
+
+  addMessage(text, 'user');
+  aiInput.value = '';
+
+  setTimeout(() => {
+    addMessage(getAIResponse(text), 'ai');
+  }, 600);
+}
+
+function addMessage(text, sender) {
+  const div = document.createElement('div');
+  div.className = `ai-message ${sender}`;
+  div.innerText = text;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+function getAIResponse(input) {
+  input = input.toLowerCase();
+
+  if (input.includes('who') || input.includes('about')) {
+    return "Shellah Emmanuella is a frontend developer focused on creating modern, interactive, and high-performance web experiences.";
+  }
+
+  if (input.includes('skills')) {
+    return "Her core skills include HTML, CSS, JavaScript, Bootstrap, UI/UX design, and responsive web development.";
+  }
+
+  if (input.includes('projects')) {
+    return "Shellah has built several projects including a food delivery system, portfolio websites, and interactive UI applications.";
+  }
+
+  if (input.includes('contact')) {
+    return "You can contact Shellah via the Contact section or WhatsApp link on this website.";
+  }
+
+  return "That’s a great question! Try asking about her skills, projects, or experience 😊";
+}
+
+
+  arrow.addEventListener("click", () => {
+    if (window.scrollY < 300) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+
+
+
+</script>
+
+</body>
+</html>
